@@ -1,0 +1,22 @@
+.siz{
+	width: 30%;
+	margin: 25px auto auto auto;
+	box-sizing: border-box;
+	
+}
+.jumbotron{
+	margin: 20px 0;
+}
+.card{
+	margin-bottom:10px;
+	width:25px;
+	margin:1.66%;
+	float:left;
+	
+}
+.well{
+	margin: 5px auto;
+}
+#changeid{
+	display:inline;
+}

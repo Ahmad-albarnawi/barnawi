@@ -1,0 +1,62 @@
+<%- include("../partials/header") %>
+
+
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3">
+				<ul class="nav flex-column">
+			  		<li class="nav-item">
+						<a class="nav-link active" href="#">Active</a>
+			  		</li>
+			  		<li class="nav-item">
+						<a class="nav-link" href="#">Link</a>
+			  		</li>
+			  		<li class="nav-item">
+						<a class="nav-link" href="#">Link</a>
+			  		</li>
+				</ul>
+			</div>
+			
+			<div class="col-lg-9">
+				<div class="card" style="width: 35rem;">
+					
+					  <img class="card-img-top" src="<%= campground.img %>" alt="Card image cap">
+						<div class="card-body">
+						    <h5 class="card-title"><%= campground.name %></h5>
+						<span class="float-right"><%= campground.price %>/night</span>
+						<p class="card-text">sbmitted by <b><%= campground.author.username %></b>							</p>
+						<p class="card-text"> <%= campground.des %> </p>
+						
+				<% if(Currentuser && campground.author.id.equals(Currentuser._id)){ %>
+					<a class="btn btn-info" href="/campgrounds/<%=campground._id %>/edit">edit</a>
+				<form method="POST" action="/campgrounds/<%=campground._id%>/delete?_method=DELETE">
+					<button id="changeid" class="btn btn-danger">delete</button>
+				</form>
+				<% } %>			
+					</div>
+					</div>
+			</div>
+
+
+		<div class="well">
+			
+			<a class="btn btn-success" href="/campgrounds/<%=campground._id%>/comment/new">add 					comment</a>
+			
+		<% campground.comments.forEach(function(comment){ %>
+			<p> <b> <%= comment.author.username %> </b> <br>  <%= comment.text %> </p>
+		<% if(Currentuser && comment.author.id.equals(Currentuser._id)){ %>
+		<a class="btn btn-info" href="/campgrounds/<%=campground._id%>/comment/<%=comment._id%>/edit">edit</a>
+		<form method="POST" action="/campgrounds/<%=campground.id%>/comment/<%=comment._id%>?_method=DELETE">
+			<button class="btn btn-danger">
+				delete
+			</button>
+		</form>
+		<% } %>
+		<% }) %>
+		</div>
+		</div>
+
+</div>
+
+
+<%- include("../partials/footer") %>
