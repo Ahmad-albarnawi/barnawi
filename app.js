@@ -16,16 +16,17 @@ const campgroundRouter  = require("./routes/campground"),
 	  commentRouter 	= require("./routes/comment"),
 	  indexRouter 		= require("./routes/index");
 
+mongoose.connect(process.env.DATABASEURL) 
 
-mongoose.connect("mongodb+srv://albarnawi:0503533719@albarnawi-wg0ri.mongodb.net/test?retryWrites=true&w=majority", {
-	useNewUrlParser: true,
-	useCreateIndex: true
-}).then(() => {
-	console.log("conected to DB")
-}).catch( (err) => {
-	console.log("err", err.message)
-})
 
+// mongoose.connect("mongodb+srv://albarnawi:0503533719@albarnawi-wg0ri.mongodb.net/test?retryWrites=true&w=majority", {
+// 	useNewUrlParser: true,
+// 	useCreateIndex: true
+// }).then(() => {
+// 	console.log("conected to DB")
+// }).catch( (err) => {
+// 	console.log("err", err.message)
+// })
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
